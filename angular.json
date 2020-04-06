@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "DiSocialized"
+    }
+  },
+  "defaultProject": "DiSocialized",
+  "cli": {
+    "analytics": "64d50bf3-44e8-4feb-a6d7-5ad7b592866a"
+  }
 }
