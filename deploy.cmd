@@ -15,6 +15,21 @@ IF %ERRORLEVEL% NEQ 0 (
   goto error
 )
 
+:: Installing NPM dependencies.
+IF EXIST "%DEPLOYMENT_SOURCE%\DiSocialized\package.json" (
+  pushd "%DEPLOYMENT_SOURCE%\DiSocialized"
+  call npm install --save
+  IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+)
+
+:: Building the Angular App
+IF EXIST "%DEPLOYMENT_SOURCE%\DiSocialized\.angular-cli.json" (
+  pushd "%DEPLOYMENT_SOURCE%\DiSocialized"
+  call :ExecuteCmd node_modules\.bin\ng build --progress false --prod
+  IF !ERRORLEVEL! NEQ 0 goto error
+  popd
+)
 :: Setup
 :: -----
 
